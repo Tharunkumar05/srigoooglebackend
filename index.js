@@ -27,7 +27,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors({
-    origin:["https://srigoooglebackend-1.onrender.com"],
+    origin:["https://srigoogleparadisekarur.onrender.com"],
     methods:["GET","POST","PUT", "DELETE"],
     credentials: true
 }));
