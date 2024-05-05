@@ -19,6 +19,22 @@ dotenv.config()
 
 connectDB();
 
+var whitelist = ['https://srigoogleparadisesite.onrender.com']; // List of allowed origins
+
+// CORS options
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true // This allows the server to accept cookies from the client
+}
+
+// Then pass these options to the cors middleware
+app.use(cors(corsOptions));
 
 // mongoose.connect('mongodb://127.0.0.1:27017/srigoogle')
 //  .then(()=>console.log("Database Connected"))
@@ -26,9 +42,9 @@ connectDB();
 
 
 app.use(express.json());
-app.use(cors({
-    origin: '*'
-}));
+// app.use(cors({
+//     origin: '*'
+// }));
 // app.use(cors({
 //     methods:["GET","POST","PUT", "DELETE"],
 //     credentials: true
