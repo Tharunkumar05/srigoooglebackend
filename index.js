@@ -26,13 +26,14 @@ connectDB();
 
 
 app.use(express.json());
-app.use(cors({
-    methods:["GET","POST","PUT", "DELETE"],
-    credentials: true
-}));
+app.use(cors());
+// app.use(cors({
+//     methods:["GET","POST","PUT", "DELETE"],
+//     credentials: true
+// }));
 app.use(bodyParser.json());
 app.use(cookieparser());
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
